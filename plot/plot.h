@@ -21,10 +21,11 @@ TH1* getPadAxisHist(TPad* pad)
   TIter next(pad->GetListOfPrimitives());
   TObject *obj;
   while (( obj=next() )) {
-    // cout << obj->GetName() << endl;
     if ( obj->IsA()->InheritsFrom(TH1::Class()) ) {
-      // cout << "getPadAxisHist returning hist with name " << obj->GetName() << endl;
       return (TH1*)obj;
+    }
+    if ( obj->IsA()->InheritsFrom(TGraph::Class()) ) {
+        return ((TGraph*)obj)->GetHistogram();
     }
   }
   return NULL;
