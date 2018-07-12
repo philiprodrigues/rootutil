@@ -89,6 +89,16 @@ public:
     return ret;
   }
 
+  template<class T>
+  vector<T>& GetVector(const string& branchName, int ientry)
+  {
+    GetValue(branchName, ientry);
+    LeafAndBranch lb=leavesAndBranches.find(branchName)->second;
+    int N=lb.leaf->GetLen();
+    vector<T>* d=(vector<T>*)lb.leaf->GetValuePointer();
+    return *d;
+  }
+
 protected:
   TTree* tree;
 
