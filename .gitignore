@@ -35,3 +35,5 @@
 plot/PlotDict.cxx
 tree/TreeDict.cxx
 .cvsignore
+plot/PlotDict.h
+tree/TreeDict.h
